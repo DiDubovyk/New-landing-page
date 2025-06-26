@@ -1,0 +1,14 @@
+
+services:
+  react:
+    build: .
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/landing-page
+      - landing_node_modules:/landing-page/node_modules
+    environment:
+      - NODE_ENV=development
+
+volumes:
+  landing_node_modules:
