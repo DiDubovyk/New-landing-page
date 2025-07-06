@@ -1,12 +1,79 @@
 import "./App.css";
 import Diana from "./assets/diana.jpg";
+import { PiFigmaLogoThin } from "react-icons/pi";
+import { AiOutlineHtml5 } from "react-icons/ai";
+import { RiCss3Line, RiNextjsLine } from "react-icons/ri";
+import { MdOutlineJavascript, MdDevices } from "react-icons/md";
+import { FaReact, FaNode } from "react-icons/fa6";
+import { BiLogoTailwindCss } from "react-icons/bi";
+import {
+  TbBrandTypescript,
+  TbBrandOauth,
+  TbBrandThreejs,
+} from "react-icons/tb";
+import {
+  SiExpress,
+  SiPrisma,
+  SiPostgresql,
+  SiMongodb,
+  SiPostman,
+  SiJquery,
+} from "react-icons/si";
+import { HiOutlineLink } from "react-icons/hi";
+import { FaGitAlt, FaGithub, FaDocker, FaSass } from "react-icons/fa";
+import { VscVscodeInsiders } from "react-icons/vsc";
+import { GoTools } from "react-icons/go";
 
-const skills = ["UI & UX Tech", "Server-side Logic", "Learning", "My Toolkit"];
+const skills = [
+  {
+    label: "UI & UX Tech",
+    icons: [
+      { icon: <PiFigmaLogoThin size={70} />, name: "Figma" },
+      { icon: <AiOutlineHtml5 size={70} />, name: "HTML5" },
+      { icon: <RiCss3Line size={70} />, name: "CSS" },
+      { icon: <MdOutlineJavascript size={70} />, name: "JavaScript" },
+      { icon: <FaReact size={70} />, name: "React" },
+      { icon: <BiLogoTailwindCss size={70} />, name: "TailwindCSS" },
+    ],
+  },
+  {
+    label: "Server-side Logic",
+    icons: [
+      { icon: <FaNode size={70} />, name: "NodeJs" },
+      { icon: <TbBrandTypescript size={70} />, name: "TypeScript" },
+      { icon: <SiExpress size={70} />, name: "ExpressJs" },
+      { icon: <RiNextjsLine size={70} />, name: "NextJs" },
+      { icon: <SiPrisma size={70} />, name: "Prisma" },
+      { icon: <TbBrandOauth size={70} />, name: "Authentification" },
+      { icon: <SiPostgresql size={70} />, name: "PostgreSQL" },
+      { icon: <SiMongodb size={70} />, name: "MongoDB" },
+      { icon: <HiOutlineLink size={70} />, name: "REST Api" },
+    ],
+  },
+  {
+    label: "My Toolkit",
+    icons: [
+      { icon: <FaGitAlt size={70} />, name: "Git" },
+      { icon: <FaGithub size={70} />, name: "GitHub" },
+      { icon: <VscVscodeInsiders size={70} />, name: "VsCode" },
+      { icon: <SiPostman size={70} />, name: "Postman" },
+      { icon: <GoTools size={70} />, name: "DevTools" },
+      { icon: <FaDocker size={70} />, name: "Docker" },
+    ],
+  },
+  {
+    label: "Learning",
+    icons: [
+      { icon: <SiJquery size={70} />, name: "jQuery" },
+      { icon: <TbBrandThreejs size={70} />, name: "ThreeJs" },
+      { icon: <FaSass size={70} />, name: "Sass" },
+      ],
+  },
+];
 
 export default function App() {
   return (
     <div>
-      {/* Sidebar: full-width on mobile, fixed 40% on md+ */}
       <aside
         className={`
           w-full
@@ -19,22 +86,31 @@ export default function App() {
         `}
       >
         <div className="mt-8 md:mt-16">
-          <h1 className="text-4xl md:text-7xl tracking-wide">Diana Dubovyk</h1>
-          <p className="mt-4 text-base md:text-lg leading-relaxed tracking-wider">
-            A passionate Front-End Developer
+          <h1 className="text-[64px] font-semibold tracking-wide font-cormorant [font-variant:small-caps]">
+            Diana Dubovyk
+          </h1>
+          <p
+            className="font-dmsans font-extralight
+    text-[32px]
+    leading-[40px] tracking-wider
+    text-[#D4D4D4]"
+          >
+            A passionate{" "}
+            <span className="text-white font-light">Front-End Developer</span>
             <br />
             crafting modern, responsive websites.
             <br />
-            Let’s build something amazing together.
+            <span className="text-white font-light">
+              Let’s build something amazing together.
+            </span>
           </p>
-          <button className="mt-10 inline-flex items-center bg-white text-gray-900 text-lg px-10 py-3 rounded-full shadow">
-            <span className="inline-block w-2 h-2 bg-gray-900 rounded-full mr-5" />
+          <button className="mt-10 font-dmsans text-[25px] inline-flex items-center bg-white text-gray-900 text-lg px-10 py-5 rounded-full shadow">
+            <span className="inline-block w-2 h-2 bg-gray-900 rounded-full mr-10" />
             Get in Touch
           </button>
         </div>
       </aside>
 
-      {/* Main content: no margin on mobile, pushed right on md+ */}
       <main
         className={`
           flex flex-col
@@ -43,7 +119,6 @@ export default function App() {
           h-screen overflow-y-auto
         `}
       >
-        {/* Hero image */}
         <div className="h-full">
           <img
             src={Diana}
@@ -52,22 +127,54 @@ export default function App() {
           />
         </div>
 
-        {/* Skills */}
-        <section className="bg-white p-8 md:p-12">
-          <h2 className="font-serif text-3xl md:text-4xl text-center text-[#A67763] uppercase">
+        <section className="bg-white p-4">
+          <h2
+            className="font-cormorant font-medium text-[64px] leading-[70px] 
+            tracking-[0.03em] [font-variant:small-caps] 
+            text-[#A67763] flex justify-center"
+          >
             My skillset
           </h2>
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {skills.map((label) => (
-              <div
-                key={label}
-                className="flex items-center justify-center h-32 md:h-36 bg-gray-100 hover:bg-gray-200 transition border border-gray-200"
-              >
-                <span className="text-lg md:text-xl text-gray-700">
-                  {label}
-                </span>
-              </div>
-            ))}
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-0">
+            {skills.map(({ label, icons }, idx) => {
+              const isLastCol = idx % 2 === 1;
+              const isLastRow = idx >= skills.length - 2;
+              return (
+                <div
+                  key={label}
+                  className={`
+                    skill-flip
+                    flex items-center justify-center aspect-square bg-transparent
+                    ${!isLastCol ? "border-r" : ""}
+                    ${!isLastRow ? "border-b" : ""}
+                    border-[#B09382]
+                  `}
+                >
+                  <div className="skill-flip-inner">
+                    <div className="skill-flip-front flex items-center justify-center w-full h-full bg-[#B09382]/15 hover:bg-gray-200 transition">
+                      <span className="font-dmsans font-extralight text-lg md:text-4xl text-[#83482e]">
+                        {label}
+                      </span>
+                    </div>
+                    <div className="skill-flip-back flex items-center justify-center w-full h-full">
+                      <div className="grid grid-cols-3 gap-2 md:gap-6 mb-4">
+                        {icons.map(({icon, name}) => (
+                          <div
+                            key={name}
+                            className="flex flex-col items-center"
+                          >
+                            {icon}
+                            <span className="mt-2 text-[0.95rem] text-white">
+                              {name}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </section>
 
