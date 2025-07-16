@@ -126,7 +126,7 @@ export default function App() {
             className="w-full h-full object-cover"
           />
         </div>
-
+        {/* Skills */}
         <section className="bg-white p-4">
           <h2
             className="font-cormorant font-medium text-[64px] leading-[70px] 
@@ -158,7 +158,7 @@ export default function App() {
                     </div>
                     <div className="skill-flip-back flex items-center justify-center w-full h-full">
                       <div className="grid grid-cols-3 gap-2 md:gap-6 mb-4">
-                        {icons.map(({icon, name}) => (
+                        {icons.map(({ icon, name }) => (
                           <div
                             key={name}
                             className="flex flex-col items-center"
@@ -175,6 +175,30 @@ export default function App() {
                 </div>
               );
             })}
+          </div>
+        </section>
+        {/* Projects */}
+        <section className="p-4">
+          <h2
+            className="font-cormorant font-medium text-[64px] leading-[70px] 
+            tracking-[0.03em] [font-variant:small-caps] 
+            text-[#A67763] flex justify-center"
+          >
+            My projects
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:grid-rows-2 gap-4 h-full w-full aspect-video">
+            <div className="bg-blue-400 rounded-3xl col-span-1 row-span-1 flex justify-center items-center min-h-[120px]">
+              project 1
+            </div>
+            <div className="bg-gray-500 rounded-3xl col-span-1 row-span-1  flex justify-center items-center min-h-[120px]">
+              project 2
+            </div>
+            <div className="bg-amber-400 rounded-3xl col-span-1 row-span-1 md:row-span-2  flex justify-center items-center min-h-[120px]">
+              project 3
+            </div>
+            <div className="bg-rose-500 rounded-3xl row-span-1  flex justify-center items-center min-h-[120px] col-span-1 md:col-span-2">
+              project 4
+            </div>
           </div>
         </section>
 
