@@ -7,18 +7,15 @@ import { FaReact, FaNode } from "react-icons/fa6";
 import { BiLogoTailwindCss } from "react-icons/bi";
 import {
   TbBrandTypescript,
-  TbBrandOauth,
   TbBrandThreejs,
 } from "react-icons/tb";
 import {
   SiExpress,
-  SiPrisma,
   SiPostgresql,
   SiMongodb,
   SiPostman,
   SiJquery,
 } from "react-icons/si";
-import { HiOutlineLink } from "react-icons/hi";
 import { FaGitAlt, FaGithub, FaDocker, FaSass } from "react-icons/fa";
 import { VscVscodeInsiders } from "react-icons/vsc";
 import { GoTools } from "react-icons/go";
