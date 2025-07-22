@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { PiFigmaLogoThin } from "react-icons/pi";
 import { AiOutlineHtml5 } from "react-icons/ai";
 import { RiCss3Line, RiNextjsLine } from "react-icons/ri";
@@ -41,11 +42,8 @@ const skills = [
       { icon: <TbBrandTypescript />, name: "TypeScript" },
       { icon: <SiExpress />, name: "ExpressJs" },
       { icon: <RiNextjsLine />, name: "NextJs" },
-      { icon: <SiPrisma />, name: "Prisma" },
-      { icon: <TbBrandOauth />, name: "Authentification" },
       { icon: <SiPostgresql />, name: "PostgreSQL" },
       { icon: <SiMongodb />, name: "MongoDB" },
-      { icon: <HiOutlineLink />, name: "REST Api" },
     ],
   },
   {
@@ -70,6 +68,16 @@ const skills = [
 ];
 
 const Skills: React.FC = () => {
+const [flipped, setFlipped] = useState<number[]>([]);
+
+const toggleFlip = (idx: number) => {
+    setFlipped((prev) =>
+      prev.includes(idx)
+        ? prev.filter((i) => i !== idx)
+        : [...prev, idx]
+    );
+  };
+
   return(
     <div className="bg-white p-10">
           <h2
@@ -83,31 +91,39 @@ const Skills: React.FC = () => {
             {skills.map(({ label, icons }, idx) => {
               const isLastCol = idx % 2 === 1;
               const isLastRow = idx >= skills.length - 2;
+              const isFlipped = flipped.includes(idx);
               return (
                 <div
                   key={label}
                   className={`
                     skill-flip
+                    ${isFlipped ? "flipped" : ""}
                     flex items-center justify-center aspect-square bg-transparent
                     ${!isLastCol ? "border-r" : ""}
                     ${!isLastRow ? "border-b" : ""}
                     border-[#B09382]
                   `}
+                  onClick={() => toggleFlip(idx)}
+                  onMouseEnter={() => {
+                    if (!isFlipped) toggleFlip(idx);
+                  }}
+                  style={{cursor: "pointer"}}
                 >
-                  <div className="skill-flip-inner">
+                  <div className={`skill-flip-inner ${isFlipped ? "flipped" : ""}`}>
                     <div className="skill-flip-front flex items-center justify-center w-full h-full bg-[#B09382]/15 hover:bg-gray-200 transition">
                       <span className="font-dmsans font-extralight text-lg md:text-4xl text-[#83482e]">
                         {label}
                       </span>
                     </div>
-                    <div className="skill-flip-back flex items-center justify-center w-full h-full">
-                      <div className="grid grid-cols-3 gap-2 md:gap-6 mb-4">
+                    <div className="skill-flip-back relative flex flex-col justify-center items-center w-full h-full p-4">
+                      <div className="absolute top-4 left-0 right-0 text-center font-semibold text-xl md:text-2xl xl:text-4xl">{label}</div>
+                      <div className="grid grid-cols-3 gap-2 md:gap-6 mb-4 mt-8">
                         {icons.map(({ icon, name }) => (
                           <div
                             key={name}
                             className="flex flex-col items-center"
                           >
-                            <span className="text-3xl md:text-3xl lg:text-4xl xl:text-6xl 2xl:text-8xl">{icon}</span>
+                            <span className="text-3xl md:text-3xl lg:text-3xl xl:text-6xl 2xl:text-8xl">{icon}</span>
                             <span className="mt-2 text-[0.95rem] text-white">
                               {name}
                             </span>

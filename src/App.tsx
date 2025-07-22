@@ -4,9 +4,6 @@ import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Diana from "./assets/diana.jpg";
 
-
-
-
 export default function App() {
   return (
     <div>
@@ -49,7 +46,7 @@ export default function App() {
           flex flex-col
           ml-0
           md:ml-[40%]
-          h-screen overflow-y-auto
+          overflow-y-auto
         `}
       >
         <div className="h-full">

@@ -8,7 +8,8 @@
   width: 100%;
   height: 100%;
 }
-.skill-flip:hover .skill-flip-inner {
+.skill-flip:hover .skill-flip-inner,
+.skill-flip.flipped .skill-flip-inner {
   transform: rotateY(180deg);
 }
 .skill-flip-front,
