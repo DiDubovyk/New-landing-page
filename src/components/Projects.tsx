@@ -18,7 +18,7 @@ const projects = [
   },
   {
     image: project2,
-    title: "Little Lemon Reservation",
+    title: "Little Lemon Reserv",
     description: "Restaurant reservation form",
     link: "https://little-lemon-virid-gamma.vercel.app/",
     github: "https://github.com/DiDubovyk/Little_Lemon",
@@ -71,47 +71,48 @@ const Projects: React.FC = () => {
                          blur-[1px] group-hover:blur-none"
             />
             <div className="absolute inset-0 bg-[#eda88a] opacity-30 pointer-events-none rounded-2xl group-hover:opacity-0 transition-opacity duration-300"></div>
-            <div className="absolute bottom-0 left-0 w-full bg-[rgba(0,0,0,0.7)] text-white p-4 pt-2 rounded-b-2xl opacity-80 hover:opacity-100 transition-opacity duration-300">
-              <div className="flex justify-between items-center p-3">
-                <div>
-                  <h3 className="font-dmsans text-base md:text-xl xl:text-2xl">
-                    {proj.title}
-                  </h3>
-                  <p className="text-sm xl:text-lg 2xl:text-xl font-light mt-1">
-                    {proj.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    {proj.tags.map((tag, i) => (
-                      <span
-                        key={i}
-                        className="text-xs font-medium px-2 py-1
-                               bg-gray-200 text-gray-800
-                               rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="flex gap-5 text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
-                  <a
-                    href={proj.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className=" text-[#A67763] hover:text-white font-dmsans"
-                  >
-                    <BiLinkExternal />
-                  </a>
-                  <a
-                    href={proj.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <AiFillGithub />
-                  </a>
-                </div>
-              </div>
-            </div>
+          <div
+    className={`
+      absolute bottom-0 left-0 w-full bg-[rgba(0,0,0,0.7)] text-white
+      overflow-hidden
+      max-h-[5.5rem]                /* default: only title+tags visible */
+      group-hover:max-h-[18rem]   /* on hover: expand for desc+links */
+      transition-[max-height] duration-300
+      p-4
+    `}
+  >
+    {/* 1) title */}
+    <h3 className="font-dmsans text-base md:text-xl">
+      {proj.title}
+    </h3>
+
+    {/* 2) tech‑tags (always visible) */}
+    <div className="flex flex-wrap gap-1 mt-2">
+      {proj.tags.map((tag,i) => (
+        <span
+          key={i}
+          className="text-xs font-medium px-2 py-1 bg-gray-200 text-gray-800 rounded-full"
+        >
+          {tag}
+        </span>
+      ))}
+    </div>
+
+    {/* 3) description (hidden until hover) */}
+    <p className="mt-3 text-sm xl:text-lg font-light">
+      {proj.description}
+    </p>
+
+    {/* 4) links (hidden until hover) */}
+    <div className="flex gap-4 text-xl text-[#A67763] mt-4">
+      <a href={proj.link} target="_blank" rel="noopener">
+        <BiLinkExternal className="hover:text-white" />
+      </a>
+      <a href={proj.github} target="_blank" rel="noopener">
+        <AiFillGithub className="hover:text-white" />
+      </a>
+    </div>
+  </div>
           </div>
         ))}
       </div>
